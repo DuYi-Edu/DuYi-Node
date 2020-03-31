@@ -2,7 +2,7 @@
 // http://localhost:9527/index.html  -> public/index.html 文件内容
 // http://localhost:9527/css/index.css  -> public/css/index.css 文件内容
 
-const http = require("http");
+const https = require("https");
 const URL = require("url");
 const path = require("path");
 const fs = require("fs");
@@ -56,8 +56,14 @@ async function handler(req, res) {
   res.end();
 }
 
-const server = http.createServer(handler);
+const server = https.createServer(
+  {
+    key: fs.readFileSync(path.resolve(__dirname, "./server-key.pem")), //私钥
+    cert: fs.readFileSync(path.resolve(__dirname, "./server-cert.crt"))
+  },
+  handler
+);
 server.on("listening", () => {
-  console.log("server listen 6000");
+  console.log("server listen 443");
 });
-server.listen(6100);
+server.listen(443);
