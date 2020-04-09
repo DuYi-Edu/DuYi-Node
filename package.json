@@ -18,5 +18,8 @@
   "homepage": "https://github.com/DuYi-Edu/DuYi-Node#readme",
   "devDependencies": {
     "@types/node": "^13.9.3"
+  },
+  "dependencies": {
+    "mysql2": "^2.1.0"
   }
 }
