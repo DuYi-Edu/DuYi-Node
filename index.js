@@ -1,6 +1,9 @@
 require("./models/relation");
-// require("./spider/fetchBooks");
-const stuServ = require("./services/studentService");
-stuServ.getStudents(1, 10, false, "秀").then((r) => {
+
+const adminServ = require("./services/adminService");
+// adminServ.updateAdmin(7, {
+//   loginPwd: "123",
+// });
+adminServ.login("bcd", "123").then((r) => {
   console.log(r);
 });
