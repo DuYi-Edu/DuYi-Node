@@ -20,6 +20,8 @@
     "@types/node": "^13.9.3"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
     "mockjs": "^1.1.0",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.5"
