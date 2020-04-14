@@ -26,6 +26,7 @@
     "mockjs": "^1.1.0",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.21.5",
+    "validate.js": "^0.13.1"
   }
 }
