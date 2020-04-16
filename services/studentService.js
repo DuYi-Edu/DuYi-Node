@@ -6,7 +6,7 @@ const moment = require("moment");
 const { pick } = require("../util/propertyHelper");
 exports.addStudent = async function (stuObj) {
   stuObj = pick(stuObj, "name", "birthday", "sex", "mobile", "ClassId");
-  console.log(stuObj)
+  console.log(stuObj);
   validate.validators.classExits = async function (value) {
     const c = await Class.findByPk(value);
     if (c) {
@@ -112,7 +112,7 @@ exports.getStudents = async function (
   }
 
   const result = await Student.findAndCountAll({
-    attributes: ["id", "name", "sex", "birthdady"],
+    attributes: ["id", "name", "sex", "birthday", "age"],
     where,
     include: [Class],
     offset: (page - 1) * limit,
