@@ -4,8 +4,9 @@
   "description": "每一节课都是一个分支，分支名为课程名称编号",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "nodemon -x npm run server",
+    "server": "node index"
+  },  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DuYi-Edu/DuYi-Node.git"
@@ -17,7 +18,8 @@
   },
   "homepage": "https://github.com/DuYi-Edu/DuYi-Node#readme",
   "devDependencies": {
-    "@types/node": "^13.9.3"
+    "@types/node": "^13.9.3",
+    "nodemon": "^2.0.3"
   },
   "dependencies": {
     "axios": "^0.19.2",
