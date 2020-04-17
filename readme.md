@@ -14,11 +14,12 @@ git clone https://github.com/DuYi-Edu/DuYi-Node.git
 git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 ```
 
-3. 拉取所有远程分支
+3. 查看目前所有的分支
+
+此时，你已经可以看到所有的分支了
 
 ```shell
-git fetch --all
-git pull --all
+git branch
 ```
 
 # 分支说明
