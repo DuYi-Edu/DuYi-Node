@@ -1,19 +1,28 @@
 const express = require("express");
 const app = express(); //创建一个express应用
+const path = require("path");
+const staticRoot = path.resolve(__dirname, "../public");
 
-app.use(require("./staticMiddleware"));
+/**
+ * 下面这段代码的作用：
+ * 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在该文件，如果存在，直接响应文件内容，而不再移交给后续的中间件
+ * 如果不存在文件，则直接移交给后续的中间件处理
+ * 默认情况下，如果映射的结果是一个目录，则会自动使用index.html文件
+ */
+app.use(express.static(staticRoot));
+// app.use("/static", (req, res) => {
+//   console.log(req.baseUrl, req.path);
+// });
 
-app.get("/news/abc", (req, res, next) => {
-  console.log("handler1");
-  // throw new Error("abc")
-  // 相当于 next(new Error("abc"))
-  next(new Error("abc"));
-  //   next();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(require("./myUrlEncoded"));
+
+app.post("/api/student", (req, res) => {
+  console.log(req.body);
 });
 
-//能匹配  /news  /news/abc   /news/123   /news/ab/adfs
-//不能匹配  /n   /a   /   /newsabc
-app.use("/news", require("./errorMiddleware"));
+app.use(require("./errorMiddleware"));
 
 const port = 5008;
 app.listen(port, () => {
