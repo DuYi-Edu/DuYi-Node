@@ -6,7 +6,6 @@ const moment = require("moment");
 const { pick } = require("../util/propertyHelper");
 exports.addStudent = async function (stuObj) {
   stuObj = pick(stuObj, "name", "birthday", "sex", "mobile", "ClassId");
-  console.log(stuObj);
   validate.validators.classExits = async function (value) {
     const c = await Class.findByPk(value);
     if (c) {

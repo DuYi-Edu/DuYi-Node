@@ -1,27 +1,24 @@
 const express = require("express");
-const app = express(); //创建一个express应用
+const app = express();
+
+// 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
-
-/**
- * 下面这段代码的作用：
- * 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在该文件，如果存在，直接响应文件内容，而不再移交给后续的中间件
- * 如果不存在文件，则直接移交给后续的中间件处理
- * 默认情况下，如果映射的结果是一个目录，则会自动使用index.html文件
- */
 app.use(express.static(staticRoot));
-// app.use("/static", (req, res) => {
-//   console.log(req.baseUrl, req.path);
-// });
 
+// 解析 application/x-www-form-urlencoded 格式的请求体
 app.use(express.urlencoded({ extended: true }));
+
+// 解析 application/json 格式的请求体
 app.use(express.json());
-// app.use(require("./myUrlEncoded"));
 
-app.post("/api/student", (req, res) => {
-  console.log(req.body);
-});
+// 处理 api 的请求
+app.use("/api/student", require("./api/student"));
+// app.use("/api/book", require("./api/book"));
+// app.use("/api/class", require("./api/class"));
+// app.use("/api/admin", require("./api/admin"));
 
+// 处理错误的中间件
 app.use(require("./errorMiddleware"));
 
 const port = 5008;
