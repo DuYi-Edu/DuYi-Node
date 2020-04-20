@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api/student", require("./api/student"));
 // app.use("/api/book", require("./api/book"));
 // app.use("/api/class", require("./api/class"));
-// app.use("/api/admin", require("./api/admin"));
+app.use("/api/admin", require("./api/admin"));
 
 // 处理错误的中间件
 app.use(require("./errorMiddleware"));

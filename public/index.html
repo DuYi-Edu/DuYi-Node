@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <h1>静态页面</h1>
+    <form action="/api/admin/login" method="POST">
+      <p>
+        <input type="text" name="loginId">
+      </p>
+      <p>
+        <input type="password" name="loginPwd">
+      </p>
+      <p>
+        <button>提交</button>
+      </p>
+    </form>
     <script src="./js/index.js"></script>
   </body>
 </html>
