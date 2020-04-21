@@ -3,8 +3,7 @@ const { pathToRegexp } = require("path-to-regexp");
 const cryptor = require("../util/crypt");
 const needTokenApi = [
   { method: "POST", path: "/api/student" },
-  { method: "PUT", path: "/api/student/:id" },
-  { method: "GET", path: "/api/student" },
+  { method: "PUT", path: "/api/student/:id" }
 ];
 
 // 用于解析token
