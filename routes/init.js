@@ -1,12 +1,25 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 // 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
 app.use(express.static(staticRoot));
 
-app.use(require("./corsMiddleware"));
+const whiteList = ["null"];
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (whiteList.includes(origin)) {
+        callback(null, origin);
+      } else {
+        callback(new Error("not allowed"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // 加入cookie-parser 中间件
 // 加入之后，会在req对象中注入cookies属性，用于获取所有请求传递过来的cookie
