@@ -2,15 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-const session = require("express-session");
-
-app.use(
-  session({
-    secret: "yuanjin",
-    name: "sessionid",
-  })
-);
-
 // 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
@@ -20,6 +11,10 @@ const whiteList = ["null", "http://localhost:5008"];
 app.use(
   cors({
     origin(origin, callback) {
+      if (!origin) {
+        callback(null, "*");
+        return;
+      }
       if (whiteList.includes(origin)) {
         callback(null, origin);
       } else {
