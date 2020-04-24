@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+const history = require("connect-history-api-fallback");
+app.use(history());
+
 // 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
 app.use(express.static(staticRoot));
 
-const whiteList = ["null", "http://localhost:5008"];
 app.use(
   cors({
     origin(origin, callback) {
@@ -15,11 +17,7 @@ app.use(
         callback(null, "*");
         return;
       }
-      if (whiteList.includes(origin)) {
-        callback(null, origin);
-      } else {
-        callback(new Error("not allowed"));
-      }
+      callback(null, origin);
     },
     credentials: true,
   })

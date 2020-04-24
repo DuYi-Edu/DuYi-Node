@@ -1,4 +1,19 @@
-这里面搭建vue工程（react）
+# client
 
-1. 配置build的路径，把build之后的代码放到../public中
-2. 或者，改动服务器的静态资源目录，改动到client/dist目录中
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
