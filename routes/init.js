@@ -38,6 +38,8 @@ app.use(express.urlencoded({ extended: true }));
 // 解析 application/json 格式的请求体
 app.use(express.json());
 
+app.use(require("./apiLoggerMid"));
+
 // 处理 api 的请求
 app.use("/api/student", require("./api/student"));
 // app.use("/api/book", require("./api/book"));
