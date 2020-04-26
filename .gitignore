@@ -3,3 +3,4 @@ temp/
 ~*.ppt*
 logs/
 .DS_Store
+public/upload

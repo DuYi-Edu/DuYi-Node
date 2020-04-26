@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-const history = require("connect-history-api-fallback");
-app.use(history());
+// const history = require("connect-history-api-fallback");
+// app.use(history());
 
 // 映射public目录中的静态资源
 const path = require("path");
@@ -45,6 +45,7 @@ app.use("/api/student", require("./api/student"));
 // app.use("/api/book", require("./api/book"));
 // app.use("/api/class", require("./api/class"));
 app.use("/api/admin", require("./api/admin"));
+app.use("/api/upload", require("./api/upload"));
 
 // 处理错误的中间件
 app.use(require("./errorMiddleware"));
