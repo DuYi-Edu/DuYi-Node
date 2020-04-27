@@ -5,3 +5,4 @@ logs/
 .DS_Store
 public/upload
 resources
+public/origin
