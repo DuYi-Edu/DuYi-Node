@@ -5,6 +5,8 @@ const cors = require("cors");
 // const history = require("connect-history-api-fallback");
 // app.use(history());
 
+app.use(require("./imgProtectMid"));
+
 // 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
