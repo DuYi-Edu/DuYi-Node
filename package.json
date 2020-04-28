@@ -29,6 +29,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "http-proxy-middleware": "^1.0.3",
     "jimp": "^0.10.3",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.2.0",

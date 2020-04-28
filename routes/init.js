@@ -25,6 +25,8 @@ app.use(
   })
 );
 
+
+
 // 加入cookie-parser 中间件
 // 加入之后，会在req对象中注入cookies属性，用于获取所有请求传递过来的cookie
 // 加入之后，会在res对象中注入cookie方法，用于设置cookie
@@ -39,6 +41,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // 解析 application/json 格式的请求体
 app.use(express.json());
+
+// 使用代理
+app.use(require("./proxyMid"));
 
 app.use(require("./apiLoggerMid"));
 
