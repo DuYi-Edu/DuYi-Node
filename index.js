@@ -1,21 +1,9 @@
-require("./init");
-
-// const ejs = require("ejs");
-
-// ejs
-//   .renderFile("./test.ejs", {
-//     number: Math.random(),
-//   })
-//   .then((result) => {
-//     console.log(result);
-//   });
-
-// const str = `
-// 生成的数字是：<%= number %>
-// `;
-
-// const result = ejs.render(str, {
-//   number: Math.random(),
-// });
-
-// console.log(result);
+// require("./init");
+const QRCode = require("qrcode");
+QRCode.toDataURL("https://duyi.ke.qq.com/?tuin=a5d48d54", (err, url) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(url);
+  }
+});
