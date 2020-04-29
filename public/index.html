@@ -6,18 +6,45 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="divcode"></div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+    <p>账号：<input type="text" id="loginId" /></p>
+    <p>密码：<input type="password" id="loginPwd" /></p>
+    <p id="captchaArea" style="display: none;">
+      验证码：<input type="text" id="captcha" />
+      <img id="imgCaptcha" src="/captcha" alt="" />
+    </p>
+    <p>
+      <button>登录</button>
+    </p>
     <script>
-      new QRCode(divcode, {
-        text: "http://yuanjin.tech",
-        width: 128,
-        height: 128,
-        colorDark: "blue",
-        colorLight: "#fff",
-        correctLevel: QRCode.CorrectLevel.H,
-        src: "./img/logo.jpg"
-      });
+      function refreshCaptcha() {
+        imgCaptcha.src = `/captcha?rad=${Math.random()}`;
+      }
+      imgCaptcha.onclick = refreshCaptcha
+      document.querySelector("button").onclick = async function () {
+        const body = {
+          loginId: loginId.value,
+          loginPwd: loginPwd.value,
+        };
+        if (captchaArea.style.display !== "none") {
+          body.captcha = captcha.value;
+        }
+        const resp = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }).then((resp) => resp.json());
+        if (resp.code === 401) {
+          console.log("验证码错误");
+          captchaArea.style.display = "block";
+          refreshCaptcha();
+        } else if (resp.data) {
+          console.log("登录成功");
+        } else {
+          console.log("登录失败");
+        }
+      };
     </script>
   </body>
 </html>

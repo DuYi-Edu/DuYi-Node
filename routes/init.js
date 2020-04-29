@@ -6,6 +6,11 @@ const cors = require("cors");
 // app.use(history());
 
 app.use(require("./imgProtectMid"));
+app.use(
+  require("express-session")({
+    secret: "duyiedu",
+  })
+);
 
 // 映射public目录中的静态资源
 const path = require("path");
@@ -44,6 +49,8 @@ app.use(express.json());
 app.use(require("./proxyMid"));
 
 app.use(require("./apiLoggerMid"));
+
+app.use(require("./captchaMid"));
 
 // 模板引擎
 app.set("views", path.resolve(__dirname, "./views"));

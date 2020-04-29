@@ -42,6 +42,7 @@
     "path-to-regexp": "^6.1.0",
     "qrcode": "^1.4.4",
     "sequelize": "^5.21.5",
+    "svg-captcha": "^1.4.0",
     "validate.js": "^0.13.1"
   }
 }
