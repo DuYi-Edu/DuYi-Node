@@ -15,7 +15,15 @@ app.use(
 // 映射public目录中的静态资源
 const path = require("path");
 const staticRoot = path.resolve(__dirname, "../public");
-app.use(express.static(staticRoot));
+app.use(
+  express.static(staticRoot, {
+    setHeaders(res, path) {
+      if (!path.endsWith(".html")) {
+        res.header("Cache-Control", `max-age=${3600*24*365*100}`);
+      }
+    },
+  })
+);
 
 app.use(
   cors({
