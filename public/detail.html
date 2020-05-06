@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="detail"></div>
+    <script>
+      fetch("/api/book/44")
+        .then((resp) => resp.json())
+        .then((resp) => {
+          render(resp.data);
+        });
+
+      function render(book) {
+        const div = document.getElementById("detail");
+        div.innerHTML = `
+            <h1>${book.name}</h1>
+            <div>
+                ${book.description}
+            </div>
+          `;
+      }
+    </script>
+  </body>
+</html>

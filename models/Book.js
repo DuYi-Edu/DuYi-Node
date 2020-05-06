@@ -9,7 +9,7 @@ module.exports = sequelize.define(
       allowNull: false,
     },
     imgurl: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     publishDate: {
       type: DataTypes.STRING,
@@ -18,7 +18,11 @@ module.exports = sequelize.define(
     author: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    description: {
+      type: DataTypes.TEXT("LONG"),
+      allowNull: false,
+    },
   },
   {
     paranoid: true,
