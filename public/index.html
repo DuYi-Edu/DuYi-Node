@@ -7,26 +7,20 @@
   </head>
   <body>
     <button>发送数据到服务器</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script>
-      // 客户端（浏览器）websocket
-      const ws = new WebSocket("ws://localhost:5008"); // 创建一个websocket，同时，发送连接到服务器
-      ws.onopen = function () {
-        // http握手完成
-        console.log("连接已建立");
-      };
-
-      ws.onmessage = function (e) {
-        console.log("来自服务器的数据", e.data);
-      };
-
-      ws.onclose = function () {
-        console.log("通道关闭");
-      };
-
+      const socket = io.connect();
       document.querySelector("button").onclick = function () {
-        ws.send("123");
+        socket.emit("msg", "msg from client");
       };
-      //   ws.close(); //客户端主动断开连接
+
+      socket.on("test", (chunk) => {
+        console.log(chunk);
+      });
+
+      socket.on("disconnect", () => {
+        console.log("closed");
+      });
     </script>
   </body>
 </html>
