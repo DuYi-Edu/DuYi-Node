@@ -6,6 +6,7 @@
 
 ```shell
 git clone https://github.com/DuYi-Edu/DuYi-Node.git
+cd DuYi-Node
 ```
 
 2. 获取所有远程分支并映射到本地
