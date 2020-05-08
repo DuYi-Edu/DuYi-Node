@@ -16,6 +16,7 @@ router.post(
         path: "/",
         domain: "localhost",
         maxAge: 7 * 24 * 3600 * 1000, //毫秒数
+        sameSite: "Lax",
       });
       res.header("authorization", value);
     }

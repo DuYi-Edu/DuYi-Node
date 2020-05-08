@@ -7,17 +7,37 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <form action="/api/admin/login" method="POST">
-      <p>
-        <input type="text" name="loginId">
-      </p>
-      <p>
-        <input type="text" name="loginPwd">
-      </p>
-      <p>
-        <button>登录</button>
-      </p>
-    </form>
-    <script src="./js/index.js"></script>
+    <h1>被用户信任的站点</h1>
+    <p>
+      <input type="text" id="loginId" />
+    </p>
+    <p>
+      <input type="password" id="loginPwd" />
+    </p>
+    <p>
+      <button id="login">登录</button>
+    </p>
+
+    <script>
+      function $(selector) {
+        return document.querySelector(selector);
+      }
+      $("#login").onclick = function () {
+        fetch("/api/admin/login", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            loginId: $("#loginId").value,
+            loginPwd: $("#loginPwd").value,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            console.log(resp);
+          });
+      };
+    </script>
   </body>
 </html>
