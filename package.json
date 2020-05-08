@@ -22,7 +22,9 @@
     "nodemon": "^2.0.3"
   },
   "dependencies": {
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "xss": "^1.0.6"
   }
 }
