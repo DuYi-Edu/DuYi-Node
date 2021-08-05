@@ -1,8 +1,4 @@
-node_modules/
-temp/
+node_modules
 ~*.ppt*
-logs/
 .DS_Store
-public/upload
-public/origin
-resources
+

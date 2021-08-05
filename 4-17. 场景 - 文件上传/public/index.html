@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      <input type="text" name="a" />
+    </p>
+    <p>
+      <input type="file" name="img" accept="image/*" multiple />
+    </p>
+    <p>
+      <button>提交</button>
+    </p>
+    <img src="" alt="" />
+    <script>
+      function upload() {
+        const inpA = document.querySelector("[name=a]");
+        const inpFile = document.querySelector("[name=img]");
+        const img = document.querySelector("img");
+        const formData = new FormData(); //帮助你构建form-data格式的消息体
+        formData.append("a", inpA.value);
+        for (const file of inpFile.files) {
+          formData.append("img", file, file.name);
+        }
+
+        fetch("/api/upload", {
+          body: formData,
+          method: "POST",
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            console.log(resp);
+            if (resp.code) {
+              //有错误
+              alert(resp.msg);
+            } else {
+              img.src = resp.data;
+            }
+          });
+      }
+
+      document.querySelector("button").onclick = upload;
+    </script>
+  </body>
+</html>

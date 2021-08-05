@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "每一节课都是一个分支，分支名为课程名称编号",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -x npm run server",
+    "server": "node --inspect index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuYi-Edu/DuYi-Node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuYi-Edu/DuYi-Node/issues"
+  },
+  "homepage": "https://github.com/DuYi-Edu/DuYi-Node#readme",
+  "devDependencies": {
+    "@types/node": "^13.9.3",
+    "nodemon": "^2.0.3"
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <h1>被用户信任的站点</h1>
+    <p>
+      <input type="text" id="loginId" />
+    </p>
+    <p>
+      <input type="password" id="loginPwd" />
+    </p>
+    <p>
+      <button id="login">登录</button>
+    </p>
+
+    <script>
+      function $(selector) {
+        return document.querySelector(selector);
+      }
+      $("#login").onclick = function () {
+        fetch("/api/admin/login", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            loginId: $("#loginId").value,
+            loginPwd: $("#loginPwd").value,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            console.log(resp);
+          });
+      };
+    </script>
+  </body>
+</html>

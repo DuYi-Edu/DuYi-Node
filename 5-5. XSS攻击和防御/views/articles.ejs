@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/">发布文章</a>
+    <p>
+      <a href="/<%=redirect%>">跳转到：<%=redirect%></a>
+    </p>
+    <h1>文章列表</h1>
+    <% articles.forEach(art => { %>
+    <div style="border-bottom: 1px solid;">
+      <%- art%>
+    </div>
+    <% }) %>
+  </body>
+</html>

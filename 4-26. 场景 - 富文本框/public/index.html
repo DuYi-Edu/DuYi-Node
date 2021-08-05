@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="1.asfdasdf.css" />
+    <style>
+      .editor {
+        width: 80%;
+        height: 400px;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>添加一本书籍</h1>
+    <p>书籍名称：<input type="text" id="name" /></p>
+    <div>
+      书籍描述：
+      <!-- 富文本框 -->
+      <div id="editor"></div>
+    </div>
+    <p>
+      <button>提交</button>
+    </p>
+    <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+    <script>
+      var E = window.wangEditor;
+      var editor = new E("#editor");
+      editor.customConfig.uploadImgServer = "/api/upload";
+      editor.customConfig.uploadFileName = "img";
+      editor.customConfig.uploadImgHooks = {
+        customInsert: function (insertImg, result) {
+          insertImg(result.data);
+        },
+      };
+      editor.create();
+      editor.txt.html("<p>这是默认的内容</p>");
+      function $(selector) {
+        return document.querySelector(selector);
+      }
+      async function addBook() {
+        const name = $("#name").value;
+        const description = editor.txt.html();
+        const resp = await fetch("/api/book", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            description,
+            publishDate: Date.now(),
+            author: "袁进",
+          }),
+        }).then((resp) => resp.json());
+        console.log(resp);
+      }
+      $("button").onclick = addBook;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/articles">文章列表</a>
+    <h1>发布文章</h1>
+    <textarea id="txtArticle" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <script>
+      const txt = document.getElementById("txtArticle");
+      document.querySelector("button").onclick = function () {
+        fetch("/api/article/add", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            content: txt.value,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            console.log(resp);
+          });
+      };
+    </script>
+  </body>
+</html>

